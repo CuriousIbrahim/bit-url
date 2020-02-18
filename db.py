@@ -24,9 +24,8 @@ class Url(Base):
 
     id = Column(String, primary_key=True)
     original_url = Column(String)
-    times_visited = Column(Integer, server_default=text("1"))
+    times_visited = Column(Integer, server_default=text("0"))
     timestamp_added = Column(DateTime, server_default=func.now())
-    disabled_on = Column(DateTime)
 
 # Base.metadata.create_all(engine)
 
