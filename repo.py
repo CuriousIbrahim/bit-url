@@ -18,7 +18,7 @@ class Repository:
 
     def get_url(self, short_url):
         result = self.session.query(Url).filter_by(id=short_url).all()
-        print(result.entities['id'])
+        return result[0].original_url
 
 
 

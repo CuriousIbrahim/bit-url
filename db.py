@@ -27,6 +27,6 @@ class Url(Base):
     times_visited = Column(Integer, server_default=text("0"))
     timestamp_added = Column(DateTime, server_default=func.now())
 
-# Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
 
 
