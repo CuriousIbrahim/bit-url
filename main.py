@@ -1,7 +1,9 @@
 from flask import Flask, request, redirect
+from datetime import datetime
 
 from util import generate_short_url
 from repo import Repository
+from ip import get_info_from_ip
 
 
 repository = Repository()
@@ -28,6 +30,12 @@ def create_url():
 def get_original_url():
     short_url = request.args.get("id")
     url = repository.get_url(short_url)
+    dt = datetime.now()
+    ip = request.remote_addr
+    repository.increment_visit(short_url)
+    # ip_info = get_info_from_ip(ip)
+    repository.insert_ip_address_and_its_visit(ip, short_url)
+
     return redirect(url)
 
 
