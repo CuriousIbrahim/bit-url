@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect
 from datetime import datetime
+from threading import Thread
 
 from util import generate_short_url
 from repo import Repository
@@ -21,7 +22,6 @@ def create_url():
     url = request.args.get("url")
     short_url = generate_short_url(SHORT_URL_LENGTH)
     repository.add_url(url, short_url)
-    repository.get_url(short_url)
     return short_url
 
 
@@ -31,8 +31,9 @@ def get_original_url():
     url = repository.get_url(short_url)
     dt = datetime.now()
     ip = request.remote_addr
-    repository.increment_visit(short_url)
-    repository.insert_ip_address_and_its_visit(ip, short_url, dt)
+
+    Thread(target=repository.increment_visit, args=(short_url, )).start()
+    Thread(target=repository.insert_ip_address_and_its_visit, args=(ip, short_url, dt))
 
     return redirect(url)
 
