@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, Float, ForeignKey, ForeignKeyConstraint
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func, text
 from sqlalchemy.orm import relationship, sessionmaker
@@ -6,7 +6,7 @@ from sqlalchemy.dialects.postgresql import INET
 
 import csv
 
-from config import NAME, PASSWORD, DB_NAME
+from biturl.config import NAME, PASSWORD, DB_NAME
 
 # try:
 #     conn = psycopg2.connect("dbname='{}' user='{}' host='{}' password='{}'"

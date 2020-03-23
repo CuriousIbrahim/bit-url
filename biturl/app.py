@@ -2,8 +2,8 @@ from flask import Flask, request, redirect
 from datetime import datetime
 from threading import Thread
 
-from util import generate_short_url
-from repo import Repository
+from biturl.util import generate_short_url
+from biturl.repo import Repository
 
 
 repository = Repository()

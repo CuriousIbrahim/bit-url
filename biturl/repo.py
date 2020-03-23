@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from redis import Redis
 
-from db import engine, Url, IpAddress, Visit
+from biturl.db import engine, Url, IpAddress, Visit
 # from ip import get_info_from_ip
 
 

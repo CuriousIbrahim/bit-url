@@ -1,6 +1,6 @@
 import ipinfo
 
-from config import IPINFO_ACCESS_TOKEN as access_token
+from biturl.config import IPINFO_ACCESS_TOKEN as access_token
 
 handler = ipinfo.getHandler(access_token)
 
