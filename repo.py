@@ -1,10 +1,13 @@
 from sqlalchemy.orm import sessionmaker
+from redis import Redis
 
 from db import engine, Url, IpAddress, Visit
 # from ip import get_info_from_ip
 
 
 Session = sessionmaker(bind=engine)
+
+cache = Redis(host='localhost', port=6379, db=0, decode_responses=True)
 
 
 class Repository:
@@ -16,10 +19,17 @@ class Repository:
         obj = Url(original_url=original_url, id=short_url)
         self.session.add(obj)
         self.session.commit()
+        cache.set(short_url, original_url)
 
     def get_url(self, short_url):
-        result = self.session.query(Url).filter_by(id=short_url).all()
-        return result[0].original_url
+        url = cache.get(short_url)
+
+        if url is None:
+            result = self.session.query(Url).filter_by(id=short_url).all()
+            url = result[0].original_url
+            cache.set(short_url, url)
+
+        return url
 
     def increment_visit(self, short_url):
         result = self.session.query(Url).filter_by(id=short_url).all()
@@ -27,7 +37,6 @@ class Repository:
         url.times_visited += 1
         self.session.add(url)
         self.session.commit()
-        print("now", url.times_visited)
 
     def does_ip_already_exit(self, ip):
         result = self.session.query(IpAddress).filter_by(ip=ip).all()
