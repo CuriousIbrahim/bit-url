@@ -56,18 +56,19 @@ class IpAddress(Base):
 
     # id = Column(Integer, primary_key=True, autoincrement=True)
     ip = Column(INET, primary_key=True)
-    hostname = Column(String)
-    zipcode = Column(String)
-    latitude = Column(Float)
-    longitude = Column(Float)
-    timezone = Column(String, ForeignKey("timezone.name"))
-    country_id = Column(Integer)
-    city_name = Column(String)
-    region = Column(String)
-
-    visit = relationship("Visit")
-
-    ForeignKeyConstraint(['country_id', 'city.country_id'], ['city', 'city.name'])
+    created_at = Column(DateTime, server_default=func.now())
+    # # hostname = Column(String)
+    # # zipcode = Column(String)
+    # # latitude = Column(Float)
+    # # longitude = Column(Float)
+    # # timezone = Column(String, ForeignKey("timezone.name"))
+    # # country_id = Column(Integer)
+    # # city_name = Column(String)
+    # # region = Column(String)
+    #
+    # visit = relationship("Visit")
+    #
+    # ForeignKeyConstraint(['country_id', 'city.country_id'], ['city', 'city.name'])
 
 
 
@@ -77,7 +78,7 @@ class Visit(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     ip_address = Column(INET, ForeignKey('ip_address.ip'))
     url = Column(String, ForeignKey("url.id"))
-    datetime = Column(DateTime)
+    visited_at = Column(DateTime)
 
 
 class Country(Base):
@@ -106,7 +107,7 @@ class Timezone(Base):
 
     name = Column(String, primary_key=True)
 
-    ip_address = relationship("IpAddress")
+    # ip_address = relationship("IpAddress")
 
 
 

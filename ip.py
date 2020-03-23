@@ -7,6 +7,8 @@ handler = ipinfo.getHandler(access_token)
 def get_info_from_ip(ip):
     details = handler.getDetails(ip)
 
+    print(details.all)
+
     toReturn = {
         'city': details.city,
         'country': details.country,

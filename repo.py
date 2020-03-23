@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 
-from db import engine, Url
-from ip import get_info_from_ip
+from db import engine, Url, IpAddress, Visit
+# from ip import get_info_from_ip
 
 
 Session = sessionmaker(bind=engine)
@@ -29,8 +29,22 @@ class Repository:
         self.session.commit()
         print("now", url.times_visited)
 
-    def insert_ip_address_and_its_visit(self, ip, short_url):
-        ip_info = get_info_from_ip(ip)
+    def does_ip_already_exit(self, ip):
+        result = self.session.query(IpAddress).filter_by(ip=ip).all()
+        return len(result) > 0
+
+    def insert_ip_address_and_its_visit(self, ip, short_url, timestamp):
+        if not self.does_ip_already_exit(ip):
+            obj = IpAddress(ip=ip)
+            self.session.add(obj)
+            self.session.commit()
+
+        obj = Visit(ip_address=ip, url=short_url, visited_at=timestamp)
+        self.session.add(obj)
+        self.session.commit()
+
+
+
 
 
 
