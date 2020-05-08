@@ -1,0 +1,13 @@
+
+.Header {
+    width: 100%;
+    background-color: #e3e3e3;
+    overflow: hidden;
+}
+
+h1 {
+    left: 10px;
+    float: left;
+    margin-left: 5vw;
+}
+

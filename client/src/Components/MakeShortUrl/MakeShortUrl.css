@@ -1,0 +1,13 @@
+.MakeShortUrl {
+    text-align: center;
+    margin-top: 10vw;
+    margin-bottom: 1vw;
+}
+
+.MakeShortUrl > form > .url-input {
+    font-size: 30px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid black;
+}

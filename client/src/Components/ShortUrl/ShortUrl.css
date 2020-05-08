@@ -1,0 +1,9 @@
+.ShortUrl {
+    border: 1px black solid;
+    position: relative;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 1vw;
+    font-size: 20px;
+    padding: 4px;
+}
