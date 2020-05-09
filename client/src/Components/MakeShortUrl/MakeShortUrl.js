@@ -1,6 +1,12 @@
 import React from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { addLink } from '../../actions';
 
 import './MakeShortUrl.css';
+
+const DOMAIN_NAME = 'http://localhost:5000'
 
 class MakeShortUrl extends React.Component {
 
@@ -15,11 +21,29 @@ class MakeShortUrl extends React.Component {
 
     handleTextChange(event) {
         console.log(event.target.value);
+
+        this.setState({url: event.target.value});
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('submit');
+        
+        let url = `${DOMAIN_NAME}/create?url=${this.state.url}`;
+
+        axios.get(url)
+            .then(res => {
+                let id = res.data.id;
+                let shortUrl = `${DOMAIN_NAME}/${id}`
+
+                this.props.addLink(shortUrl);
+                
+                this.setState({url: ''});
+            });
+
+    }
+
+    clearInput() {
+        document.getElementsByClassName('url-input')[0].reset();
     }
 
     render() {
@@ -27,7 +51,8 @@ class MakeShortUrl extends React.Component {
             <div className="MakeShortUrl">
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <input type='text' 
-                           name='url' 
+                           name='url'
+                           value={this.state.url} 
                            className='url-input' 
                            placeholder='www.example.com' 
                            onChange={this.handleTextChange.bind(this)}/>
@@ -39,4 +64,7 @@ class MakeShortUrl extends React.Component {
     }
 }
 
-export default MakeShortUrl;
+export default connect(
+    null,
+    { addLink }
+)(MakeShortUrl);
