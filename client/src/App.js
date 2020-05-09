@@ -5,7 +5,6 @@ import Header from "./Components/Header/Header";
 import MakeShortUrl from './Components/MakeShortUrl/MakeShortUrl';
 import ListOfUrls from './Components/ListOfUrls/ListOfUrls';
 
-import logo from './logo.svg';
 import './App.css';
 
 import { store } from './store';
