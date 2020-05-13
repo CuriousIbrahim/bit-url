@@ -10,10 +10,6 @@ class ListOfUrls extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            urls: []
-        }
     }
 
     render() {
@@ -24,7 +20,7 @@ class ListOfUrls extends React.Component {
 
         if (this.props.urls) {
             urls = this.props.urls.map((item) => {
-                console.log(item);
+                console.log(item.url);
                 return (<ShortUrl url={item.url} />)
             });
         }
