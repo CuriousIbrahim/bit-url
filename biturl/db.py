@@ -6,7 +6,7 @@ from sqlalchemy.dialects.postgresql import INET
 
 import csv
 
-from biturl.config import NAME, PASSWORD, DB_NAME
+from config import NAME, PASSWORD, DB_NAME
 
 # try:
 #     conn = psycopg2.connect("dbname='{}' user='{}' host='{}' password='{}'"

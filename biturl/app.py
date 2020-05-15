@@ -3,8 +3,8 @@ from flask_cors import CORS
 from datetime import datetime
 from threading import Thread
 
-from biturl.util import generate_short_url
-from biturl.repo import Repository
+from util import generate_short_url
+from repo import Repository
 
 
 repository = Repository()
@@ -53,3 +53,5 @@ def get_original_url():
     return redirect(url)
 
 
+if __name__ == "__main__":
+    app.run()

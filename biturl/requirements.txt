@@ -1,0 +1,10 @@
+Flask
+sqlalchemy
+psycopg2-binary
+ipinfo
+requests
+beautifulsoup4
+lxml
+redis
+flask-cors
+uwsgi
