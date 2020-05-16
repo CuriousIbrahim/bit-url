@@ -1,7 +1,9 @@
 # postgres database info
-NAME = "name"
+NAME = "postgres"
 PASSWORD = "password"
-DB_NAME = "db_name"
+DB_NAME = "biturl"
+HOST = "db" # don't change
+PORT = 5432 # don't change
 
 # ipinfo access token
 IPINFO_ACCESS_TOKEN = 'insert access token'
