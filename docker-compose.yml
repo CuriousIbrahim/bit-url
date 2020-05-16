@@ -1,0 +1,39 @@
+version: '3'
+
+services: 
+    app:
+        build:
+            context: ./biturl
+            dockerfile: Dockerfile
+        command: uwsgi uwsgi.ini
+        ports:
+            - "5000:5000"
+        depends_on: 
+            - db
+            - cache
+        networks: 
+            - db_nw
+            - cache_nw
+    db:
+        image: postgres
+        restart: always
+        env_file: ./biturl/.db.env 
+        ports:
+            - "5432:5432"
+        networks:
+            - db_nw
+    cache:
+        image: "redis:alpine"
+        ports: 
+            - "6379:6379"
+        networks: 
+            - cache_nw
+    nginx:
+        image: nginx:latest
+
+networks:
+    db_nw:
+        driver: bridge
+    cache_nw:
+        driver: bridge
+    

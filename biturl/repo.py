@@ -7,7 +7,7 @@ from db import engine, Url, IpAddress, Visit
 
 Session = sessionmaker(bind=engine)
 
-cache = Redis(host='localhost', port=6379, db=0, decode_responses=True)
+cache = Redis(host='cache', port=6379, db=0, decode_responses=True)
 
 
 class Repository:
