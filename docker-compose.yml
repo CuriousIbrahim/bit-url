@@ -12,28 +12,40 @@ services:
             - db
             - cache
         networks: 
-            - db_nw
-            - cache_nw
+            - appnetwork
+            # - cache_nw
     db:
-        image: postgres
+        image: postgres:11
         restart: always
-        env_file: ./biturl/.db.env 
+        # env_file: ./biturl/.db.env
+        environment:
+            - POSTGRES_USER=ibrahim
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=my_biturl
         ports:
             - "5432:5432"
         networks:
-            - db_nw
+            - appnetwork
+        volumes:
+            - ./postgres.conf:/etc/postgres.conf
     cache:
         image: "redis:alpine"
         ports: 
-            - "6379:6379"
+            - "6379"
         networks: 
-            - cache_nw
+            - appnetwork
     nginx:
         image: nginx:latest
+   
 
 networks:
-    db_nw:
+    appnetwork:
         driver: bridge
-    cache_nw:
-        driver: bridge
+    # db_nw:
+    #     driver: bridge
+    # cache_nw:
+    #     driver: bridge
+
+# volumes: 
+#     - database-data:
     

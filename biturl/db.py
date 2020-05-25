@@ -6,7 +6,7 @@ from sqlalchemy.dialects.postgresql import INET
 
 import csv
 
-from config import NAME, PASSWORD, DB_NAME, PORT, HOST
+from config import NAME, PASSWORD, DB_NAME, HOST
 
 # try:
 #     conn = psycopg2.connect("dbname='{}' user='{}' host='{}' password='{}'"
@@ -27,7 +27,7 @@ from config import NAME, PASSWORD, DB_NAME, PORT, HOST
 
 Base = declarative_base()
 
-url = 'postgresql://{}:{}@{}:{}/{}'.format(NAME, PASSWORD, HOST, PORT, DB_NAME)
+url = 'postgresql://{}:{}@{}/{}'.format(NAME, PASSWORD, HOST, DB_NAME)
 
 print('new db url', url)
 
