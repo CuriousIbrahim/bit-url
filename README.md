@@ -1,6 +1,6 @@
 # BitUrl
 
-BitUrl is a url shortner web application similar to web application such as bit.ly and tinurul.
+BitUrl is a url shortner web application similar to bit.ly and tinurul.
 
 # Table of Contents
 
@@ -9,14 +9,14 @@ BitUrl is a url shortner web application similar to web application such as bit.
   - [System Architecture](#system-architecture)
   - [Screenshots](#screenshots)
   - [Installation and Launch](#installation-and-launch)
-    - [Prerequestics](#prerequestics)
+    - [Prerequisites](#prerequisites)
     - [Commands to Run](#commands-to-run)
   - [License](#license)
 
 ## System Architecture
 
 The app's backend is in Flask connected to a PostgreSQL database log all urls and visits, and Redis to cache urls used
-to increase performance.
+to increase performance. All of it containerized with Docker, and deployed with docker-compose.
 
 React and Redux is used to power the frontend.
 
@@ -30,7 +30,7 @@ React and Redux is used to power the frontend.
 
 ## Installation and Launch
 
-### Prerequestics
+### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/) (and [docker-compose](https://docs.docker.com/compose/install/))
 - [yarn](https://yarnpkg.com/getting-started/install)
