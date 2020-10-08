@@ -8,6 +8,7 @@ import csv
 
 from config import NAME, PASSWORD, DB_NAME, HOST
 
+print("help")
 # try:
 #     conn = psycopg2.connect("dbname='{}' user='{}' host='{}' password='{}'"
 #                             .format(DB_NAME, NAME, 'localhost', PASSWORD))
@@ -22,7 +23,6 @@ from config import NAME, PASSWORD, DB_NAME, HOST
 #     cur.execute(data)
 #     # cur.commit()
 #     conn.commit()
-
 
 
 Base = declarative_base()
@@ -73,7 +73,6 @@ class IpAddress(Base):
     # ForeignKeyConstraint(['country_id', 'city.country_id'], ['city', 'city.name'])
 
 
-
 class Visit(Base):
     __tablename__ = "visit"
 
@@ -112,7 +111,6 @@ class Timezone(Base):
     # ip_address = relationship("IpAddress")
 
 
-
 def create():
     Base.metadata.create_all(engine)
 
@@ -124,9 +122,11 @@ def create():
         reader = csv.reader(f)
         reader.__next__()
         for row in reader:
-            obj = Country(code=row[1], name=row[0], iso_code=row[2], iso_code_2=row[3])
+            obj = Country(code=row[1], name=row[0],
+                          iso_code=row[2], iso_code_2=row[3])
             session.add(obj)
 
     session.commit()
+
 
 create()
