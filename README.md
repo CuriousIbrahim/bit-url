@@ -9,7 +9,7 @@ BitUrl is a url shortner web application similar to bit.ly and tinurul.
   - [System Architecture](#system-architecture)
   - [Screenshots](#screenshots)
   - [Installation and Launch](#installation-and-launch)
-    - [Prerequestics](#prerequestics)
+    - [Prerequisites](#prerequisites)
     - [Commands to Run](#commands-to-run)
   - [License](#license)
 
@@ -30,7 +30,7 @@ React and Redux is used to power the frontend.
 
 ## Installation and Launch
 
-### Prerequestics
+### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/) (and [docker-compose](https://docs.docker.com/compose/install/))
 - [yarn](https://yarnpkg.com/getting-started/install)
