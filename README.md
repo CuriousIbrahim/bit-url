@@ -1,6 +1,6 @@
 # BitUrl
 
-BitUrl is a url shortner web application similar to web application such as bit.ly and tinurul.
+BitUrl is a url shortner web application similar to bit.ly and tinurul.
 
 # Table of Contents
 
